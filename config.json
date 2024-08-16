@@ -1,0 +1,46 @@
+{
+    "DESIGN_NAME": "apb_top",
+    "VERILOG_FILES": "dir::rtl/*.v",
+    "CLOCK_PORT": "pclk",
+    "CLOCK_PERIOD": 10.0,
+    "PNR_SDC_FILE": "dir::apb_top.sdc",
+    "SIGNOFF_SDC_FILE": "dir::apb_top.sdc",
+    "DESIGN_IS_CORE": true,
+    "FP_SIZING": "absolute",
+    "pdk::sky130A": {
+    	"PL_TARGET_DENSITY_PCT": 0.5,
+	"MAX_FANOUT_CONSTRAINT": 5
+    },
+    "DIE_AREA": [
+	    0,
+	    0,
+	    750,
+	    1250
+    ],
+    "MACROS": {
+        "sky130_sram_16byte_1r1w": {
+            "instances": {
+                "mem.u_ram": {
+                    "location": [125, 125],
+                    "orientation": "N"
+                }
+            },
+            "lib": {
+                "*": ["dir::RAM/sky130_sram_16byte_1r1w_TT_1p8V_25C.lib"]
+                },
+            "gds": [
+                "dir::RAM/sky130_sram_16byte_1r1w.gds"
+            ],
+            "lef": [
+                "dir::RAM/sky130_sram_16byte_1r1w.lef"
+            ]
+        }
+    },
+    "VDD_NETS": "vccd1",
+    "GND_NETS": "vssd1",
+    "PDN_MACRO_CONNECTIONS": ["mem.u_ram vccd1 vssd1 vccd1 vssd1"],
+    "FP_PDN_CORE_RING": true,
+    "RUN_KLAYOUT_XOR": false,
+    "MAGIC_DRC_USE_GDS": false,
+    "QUIT_ON_MAGIC_DRC": false
+}
